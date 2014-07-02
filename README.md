@@ -8,7 +8,7 @@ because he described how to start the server locally which I copied & adapted he
 
 1. checkout repository:
 
-		git clone git@github.com:clamm/learn_backbone.js.git
+		git clone git@github.com:clamm/learn_backbone_js.git
 
 2. install nodejs using brew package manager:
 
