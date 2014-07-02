@@ -1,4 +1,4 @@
-learn_backbone.js
+learn backbone.js
 =================
 
 Follow the tutorial by Thomas Davis: https://www.youtube.com/watch?v=FZSjvWtUxYk
@@ -26,5 +26,8 @@ because he described how to start the server locally which I copied & adapted he
 
 		node_modules/gulp/bin/gulp.js server
 
+6. open browser at http://localhost:3000/
+
+		
 I slightly adapted the server to provide the necessary REST endpoints for the tutorial.
 
