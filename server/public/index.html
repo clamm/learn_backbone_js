@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BackboneTutorials.com Beginner Video</title>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+	<h1>User Management</h1>
+	<hr>
+	<div class="page"></div>
+</div>
+
+<!-- start userListTemplate.html -->
+<script type="text/template" id="userListTemplate">
+    <h4> Start of userListTemplate </h4>
+    <div> Name: <%=users.get('name')%> </div>
+    <div> Age: <%=users.get('age')%> </div>   
+</script>
+<!-- end userListTemplate.html -->
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+<script>
+
+    // UserCollection.js
+    var UserCollection = Backbone.Collection.extend({
+            url: '/users'
+    });
+
+
+    // UserListView.js
+    var UserList = Backbone.View.extend({
+        el: '.page',
+        render: function () {
+            var self = this;
+            var userCollection = new UserCollection();
+            userCollection.fetch({
+                success: function () {
+                    console.log('We sucessfully fetched user data')
+                    // render user list template with fetched user data
+                    var template = _.template($('#userListTemplate').html(), {users: userCollection})
+                    self.$el.html(template);
+                }
+            });
+        }
+    });
+    
+
+    // Router.js
+	var Router = Backbone.Router.extend({
+		routes: {
+			'': 'home'
+		}
+	});
+
+
+    // -------- actual website code that is run starts here
+    var userList = new UserList();
+
+	var router = new Router();
+
+	router.on('route:home', function () {
+		console.log('We have loaded the home page')
+        userList.render();
+	});
+
+    // to start the router
+	Backbone.history.start();
+	
+</script>
+</body>
+</html> 
