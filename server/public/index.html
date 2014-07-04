@@ -12,85 +12,16 @@
 	<div class="page"></div>
 </div>
 
-<!-- start userListTemplate.html -->
-<script type="text/template" id="userListTemplate">
-<h4> Start of userListTemplate </h4>
-<table class="table striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th></th> <!-- empty column for buttons -->
-        </tr>
-    </thead>
-    <tbody>
-        <% _.each(users, function(user) { %>
-            <tr>
-                <td> <%= user.get('name') %> </td>
-                <td> <%= user.get('age') %> </td>
-                <td>  </td>
-            </tr>
-        <% }); %>
-    </tbody>
-</table>
-</script>
-<!-- end userListTemplate.html -->
-
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/labjs/2.0.3/LAB.min.js"></script>
 <script>
-
-    // UserModel.js
-    var UserModel = Backbone.Model.extend({
-    });
-
-    // UserCollection.js
-    var UserCollection = Backbone.Collection.extend({
-        model: UserModel,
-        url: '/users'
-    });
-
-
-    // UserListView.js
-    var UserList = Backbone.View.extend({
-        el: '.page', // underlying DOM element into which the view is rendered
-        render: function () {
-            var self = this;
-            var userCollection = new UserCollection();
-            userCollection.fetch({
-                success: function () {
-                    console.log('We sucessfully fetched user data')
-                    // render user list template with fetched user data
-                    var template = _.template($('#userListTemplate').html(), {users: userCollection})
-                    self.$el.html(template);
-                }
-            });
-        }
-    });
-    
-
-    // Router.js
-	var Router = Backbone.Router.extend({
-		routes: {
-			'': 'home'
-		}
-	});
-
-
-    // -------- actual website code that is run starts here
-    var userList = new UserList();
-
-	var router = new Router();
-
-	router.on('route:home', function () {
-		console.log('We have loaded the home page')
-        userList.render();
-	});
-
-    // to start the router
-	Backbone.history.start();
-	
+  var app = {};
+  $LAB
+  .script("http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js").wait()
+  .script("http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js")
+  .script("http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js")
+  .script("scripts/init.js").wait();
 </script>
+
+
 </body>
 </html> 
