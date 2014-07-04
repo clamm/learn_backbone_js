@@ -1,31 +1,38 @@
 {
-    "name": "i_hate_image_upload",
+    "name": "learn_backbone_js",
     "version": "0.0.0",
-    "description": "the server for i_hate_image_upload",
+    "description": "the server for learn_backbone_js",
     "private": true,
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/FQ400/i_hate_image_upload.git"
+        "url": "git://github.com/clamm/learn_backbone_js.git"
     },
     "keywords": [
-        "image",
-        "upload"
+        "backbone"
     ],
-    "author": "Carsten Lamm",
+    "author": "Cindy Lamm",
     "license": "Beerware",
     "bugs": {
-        "url": "https://github.com/FQ400/i_hate_image_upload/issues"
+        "url": "https://github.com/clamm/learn_backbone_js/issues"
     },
     "dependencies": {
-
+        "nohm": "~0.9.1",
+        "redis": "~0.8.1",
+        "jquery": "2.1.1",
+        "underscore": "1.6.0",
+        "backbone": "1.1.2"
     },
     "devDependencies": {
         "express": "3.x",
         "gulp": "3.7.0",
         "gulp-help": "0.1.7",
         "gulp-shell": "0.2.5"
+    },
+    "engines": {
+        "node": "0.8.x",
+        "npm": "1.1.x"
     }
 }
